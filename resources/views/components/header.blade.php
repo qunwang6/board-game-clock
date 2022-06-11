@@ -6,7 +6,7 @@
 
     <div>
         <x-button
-            @click=""
+            @click="initialise()"
             class="
                 hover:text-gray-600 active:text-gray-800
                 dark:hover:text-gray-200 dark:active:text-gray-400"

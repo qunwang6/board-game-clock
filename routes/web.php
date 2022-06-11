@@ -14,5 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('clock');
+    return view('clock', [
+        'initialNumberOfPlayers' => 2,
+        'minimumPlayers' => 1,
+        'maximumPlayers' => 16,
+    ]);
 });

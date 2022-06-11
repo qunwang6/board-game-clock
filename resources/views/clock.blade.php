@@ -1,7 +1,33 @@
 <!DOCTYPE html>
 <html 
     x-cloak
-    x-data="{ dark: true }"
+    x-data="{ 
+        dark: true, 
+        players: [],
+        show: 'number-of-players',
+
+        initialise() {
+            this.players = [];
+            for (let i = 0; i < {{ $initialNumberOfPlayers }}; i++) {
+                this.addPlayer();
+            }
+        },
+
+        addPlayer() {
+            if (this.players.length < {{ $maximumPlayers }}) {
+                this.players.push({ 
+                    name: 'Player ' + (this.players.length + 1)
+                });
+            }
+        },
+
+        removePlayer() {
+            if (this.players.length > {{ $minimumPlayers }}) {
+                this.players.pop();
+            }
+        }
+    }"
+    x-init="initialise()"
     lang="{{ str_replace('_', '-', app()->getLocale()) }}" 
     :class="dark ? 'dark' : ''"
     >
@@ -39,6 +65,11 @@
         >
 
         <x-header />
+
+        <x-number-of-players
+            :minimumPlayers="$minimumPlayers"
+            :maximumPlayers="$maximumPlayers"
+             />
 
 
     </body>
