@@ -4,13 +4,19 @@
     x-data="{ 
         dark: true, 
         players: [],
-        show: 'number-of-players',
+        show: '',
 
         initialise() {
             this.players = [];
             for (let i = 0; i < {{ $initialNumberOfPlayers }}; i++) {
                 this.addPlayer();
             }
+            this.show = 'number-of-players';
+        },
+
+        changeShow(newShow) {
+            this.show = ''; 
+            setTimeout(() => this.show = newShow, 300);
         },
 
         addPlayer() {
@@ -21,9 +27,12 @@
             }
         },
 
-        removePlayer() {
+        removePlayer(index) {
             if (this.players.length > {{ $minimumPlayers }}) {
-                this.players.pop();
+                if (index == undefined) {
+                    index = this.players.length - 1;
+                }
+                this.players.splice(index, 1);
             }
         }
     }"
@@ -66,7 +75,11 @@
 
         <x-header />
 
-        <x-number-of-players
+        <x-show.number-of-players
+            :minimumPlayers="$minimumPlayers"
+            :maximumPlayers="$maximumPlayers"
+             />
+        <x-show.player-names
             :minimumPlayers="$minimumPlayers"
             :maximumPlayers="$maximumPlayers"
              />
