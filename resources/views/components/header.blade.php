@@ -4,14 +4,24 @@
         dark:border-gray-300"                
     >
 
-    <div>
+    <div class="flex justify-center items-center gap-4">
         <x-button
             @click="initialise()"
             class="
                 hover:text-gray-600 active:text-gray-800
                 dark:hover:text-gray-200 dark:active:text-gray-400"
             >
-            <x-fas-undo-alt
+            <x-fas-arrow-left
+                class="inline-block h-6 w-6"
+                />
+        </x-button>
+        <x-button
+            @click="newGame()"
+            class="
+                hover:text-gray-600 active:text-gray-800
+                dark:hover:text-gray-200 dark:active:text-gray-400"
+            >
+            <x-fas-hourglass-start
                 class="inline-block h-6 w-6"
                 />
         </x-button>

@@ -5,18 +5,17 @@
         dark: true, 
         players: [],
         show: '',
-
-        initialise() {
-            this.players = [];
-            for (let i = 0; i < {{ $initialNumberOfPlayers }}; i++) {
-                this.addPlayer();
-            }
-            this.show = 'number-of-players';
-        },
+        previousShow: '',
+        clockType: '',
 
         changeShow(newShow) {
+            this.previousShow = this.show;
             this.show = ''; 
             setTimeout(() => this.show = newShow, 300);
+        },
+
+        changeShowBack() {
+            this.changeShow(this.previousShow);
         },
 
         addPlayer() {
@@ -34,7 +33,19 @@
                 }
                 this.players.splice(index, 1);
             }
-        }
+        },
+
+        initialise() {
+            this.players = [];
+            for (let i = 0; i < {{ $initialNumberOfPlayers }}; i++) {
+                this.addPlayer();
+            }
+            this.changeShow('number-of-players');
+        },
+
+        newGame() {
+            alert('new game');
+        },
     }"
     x-init="initialise()"
     lang="{{ str_replace('_', '-', app()->getLocale()) }}" 
@@ -83,6 +94,8 @@
             :minimumPlayers="$minimumPlayers"
             :maximumPlayers="$maximumPlayers"
              />
+
+        <x-show.clock-or-timer />
 
 
     </body>

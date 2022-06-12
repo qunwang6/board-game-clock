@@ -18,7 +18,7 @@
     </x-button.green>
 
     <template x-for="(player, index) in players">
-        <div class="flex justify-center items-center gap-2 w-96">
+        <x-show.section class="w-96">
             <x-input
                 type="text"
                 x-model="player.name" 
@@ -30,10 +30,10 @@
                 >
                 <x-fas-times class="inline-block h-6 w-6" />
             </x-button.red>
-        </div>
+        </x-show.section>
     </template>
 
-    <div class="flex justify-center items-center gap-2 mt-4 font-semibold">
+    <x-show.section class="mt-4">
         <x-button.orange 
             @click="changeShow('number-of-players')"
             class="flex justify-center items-center gap-2 w-48 text-xl md:text-2xl"
@@ -42,12 +42,12 @@
             {{ __('Back') }}
         </x-button.orange>
         <x-button.orange 
-            @click="changeShow('time-control')"
+            @click="changeShow('clock-or-timer')"
             class="flex justify-center items-center gap-2 w-48 text-xl md:text-2xl"
             >
             {{ __('Next') }}
             <x-fas-angle-right class="inline-block mt-px h-6 w-6" />
         </x-button.orange>
-    </div>
+    </x-show.section>
 
 </x-show>
