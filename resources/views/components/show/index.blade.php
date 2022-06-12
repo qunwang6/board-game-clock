@@ -10,7 +10,7 @@
     x-transition:leave="transition ease-in duration-200"
     x-transition:leave-start="opacity-100"
     x-transition:leave-end="opacity-0"
-    {{ $attributes->merge(['class' => 'md:mt-20']) }}
+    {{ $attributes }}
     >
     {{ $slot }}
 </div>

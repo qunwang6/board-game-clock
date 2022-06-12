@@ -1,6 +1,6 @@
 <x-show 
     show="timer-settings"
-    class="flex flex-col justify-center items-center gap-2 py-4"
+    class="flex flex-col justify-center items-center gap-2 md:mt-20 py-4"
     >
 
     <div class="flex flex-col items-center md:flex-row md:justify-center gap-12 py-4">

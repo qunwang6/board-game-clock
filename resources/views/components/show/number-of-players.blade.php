@@ -7,7 +7,7 @@
     show="number-of-players"
     >
 
-    <div class="flex flex-col items-center md:flex-row md:justify-center gap-4 py-4">
+    <div class="flex flex-col items-center md:flex-row md:justify-center gap-4 md:mt-20 py-4">
         <label 
             for="number_of_players"
             class="text-xl md:text-2xl"

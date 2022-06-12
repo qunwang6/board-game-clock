@@ -7,6 +7,11 @@
         show: '',
         previousShow: '',
         clockType: '',
+        clockSettings: {
+            initialSeconds: 0,
+            incrementSeconds: 0,
+            delaySeconds: 0,
+        },
         timerSettings: {
             visible: false,
         },
@@ -16,7 +21,6 @@
             this.show = ''; 
             setTimeout(() => this.show = newShow, 300);
         },
-
         changeShowBack() {
             this.changeShow(this.previousShow);
         },
@@ -28,7 +32,6 @@
                 });
             }
         },
-
         removePlayer(index) {
             if (this.players.length > {{ $minimumPlayers }}) {
                 if (index == undefined) {
@@ -38,13 +41,66 @@
             }
         },
 
+        getUnitSeconds(unit) {
+            switch (unit) {
+                case 'hour':
+                    return 60 * 60;
+                case 'minute':
+                    return 60;
+                default:
+                    return 1;
+            }
+        },
+        changeSectionTime(section, seconds) {
+            switch (section) { 
+                case 'initial':
+                    if (this.clockSettings.initialSeconds >= -seconds) {
+                        this.clockSettings.initialSeconds += seconds;
+                        if (this.clockSettings.initialSeconds < 1) {
+                            this.clockSettings.initialSeconds = 1;
+                        }
+                    }
+                    break;
+                case 'increment':
+                    if (this.clockSettings.incrementSeconds >= -seconds) {
+                        this.clockSettings.incrementSeconds += seconds;
+                        if (this.clockSettings.incrementSeconds < 0) {
+                            this.clockSettings.incrementSeconds = 0;
+                        }
+                    }
+                    break;
+                case 'delay':
+                    if (this.clockSettings.delaySeconds >= -seconds) {
+                        this.clockSettings.delaySeconds += seconds;
+                        if (this.clockSettings.delaySeconds < 0) {
+                            this.clockSettings.delaySeconds = 0;
+                        }
+                    }
+                    break;
+                default:
+                    break;
+            }
+        },
+        addClockTime(section, unit) {
+            let seconds = this.getUnitSeconds(unit);            
+            this.changeSectionTime(section, seconds);
+        },
+        removeClockTime(section, unit) {
+            let seconds = this.getUnitSeconds(unit);
+            this.changeSectionTime(section, -seconds);
+        },
+
         initialise() {
             this.players = [];
             for (let i = 0; i < {{ $initialNumberOfPlayers }}; i++) {
                 this.addPlayer();
             }
             this.changeShow('number-of-players');
+            //this.changeShow('clock-settings');
             this.clockType = 'clock';
+            this.clockSettings.initialSeconds = 600;
+            this.clockSettings.incrementSeconds = 5;
+            this.clockSettings.delaySeconds = 0;
             this.timerSettings.visible = false;
         },
 
@@ -101,6 +157,7 @@
              />
 
         <x-show.clock-or-timer />
+        <x-show.clock-settings />
         <x-show.timer-settings />
 
     </body>

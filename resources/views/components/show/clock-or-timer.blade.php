@@ -5,7 +5,7 @@
 
 <x-show 
     show="clock-or-timer"
-    class="flex flex-col justify-center items-center gap-2 py-4"
+    class="flex flex-col justify-center items-center gap-2 md:mt-20 py-4"
     >
 
     <x-show.section class="mt-4">
