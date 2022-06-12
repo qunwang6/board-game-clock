@@ -7,6 +7,9 @@
         show: '',
         previousShow: '',
         clockType: '',
+        timerSettings: {
+            visible: false,
+        },
 
         changeShow(newShow) {
             this.previousShow = this.show;
@@ -41,6 +44,8 @@
                 this.addPlayer();
             }
             this.changeShow('number-of-players');
+            this.clockType = 'clock';
+            this.timerSettings.visible = false;
         },
 
         newGame() {
@@ -96,7 +101,7 @@
              />
 
         <x-show.clock-or-timer />
-
+        <x-show.timer-settings />
 
     </body>
 
