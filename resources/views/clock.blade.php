@@ -5,7 +5,6 @@
         dark: true, 
         players: [],
         show: '',
-        previousShow: '',
         clockType: '',
         clockSettings: {
             initialSeconds: 0,
@@ -17,12 +16,8 @@
         },
 
         changeShow(newShow) {
-            this.previousShow = this.show;
             this.show = ''; 
             setTimeout(() => this.show = newShow, 300);
-        },
-        changeShowBack() {
-            this.changeShow(this.previousShow);
         },
 
         addPlayer() {

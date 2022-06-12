@@ -27,7 +27,7 @@
 
     <x-show.section class="mt-4">
         <x-button.orange 
-            @click="changeShowBack()"
+            @click="changeShow('number-of-players')"
             class="flex justify-center items-center gap-2 w-48 text-xl md:text-2xl"
             >
             <x-fas-angle-left class="inline-block mt-px h-6 w-6" />
