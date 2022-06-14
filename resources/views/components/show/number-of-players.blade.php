@@ -40,14 +40,14 @@
     <x-show.section class="mt-4">
         <x-button.orange 
             @click="changeShow('player-names')"
-            class="flex justify-center items-center gap-2 w-48 text-xl md:text-2xl"
+            class="flex justify-center items-center gap-2 w-32 sm:w-48 text-xl md:text-2xl"
             >
             {{ __('Names') }}
             <x-fas-user-edit class="inline-block mt-px h-6 w-6" />
         </x-button.orange>
         <x-button.orange 
             @click="changeShow('clock-or-timer')"
-            class="flex justify-center items-center gap-2 w-48 text-xl md:text-2xl"
+            class="flex justify-center items-center gap-2 w-32 sm:w-48 text-xl md:text-2xl"
             >
             {{ __('Next') }}
             <x-fas-angle-right class="inline-block mt-px h-6 w-6" />

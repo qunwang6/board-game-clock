@@ -20,7 +20,7 @@
             <x-button 
                 type="button"
                 @click="timerSettings.visible = !timerSettings.visible"
-                class="md:px-1 
+                class="px-2 
                     hover:text-gray-600 active:text-gray-800
                     dark:hover:text-gray-200 dark:active:text-gray-400"
                 >
@@ -42,14 +42,14 @@
     <x-show.section class="mt-4">
         <x-button.orange 
             @click="changeShow('clock-or-timer')"
-            class="flex justify-center items-center gap-2 w-48 text-xl md:text-2xl"
+            class="flex justify-center items-center gap-2 w-32 sm:w-48 text-xl md:text-2xl"
             >
             <x-fas-angle-left class="inline-block mt-px h-6 w-6" />
             {{ __('Back') }}
         </x-button.orange>
         <x-button.orange 
             @click="newGame()"
-            class="flex justify-center items-center gap-2 w-48 text-xl md:text-2xl"
+            class="flex justify-center items-center gap-2 w-32 sm:w-48 text-xl md:text-2xl"
             >
             {{ __('Start') }}
             <x-fas-hourglass-start class="inline-block mt-px h-6 w-6" />

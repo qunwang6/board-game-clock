@@ -4,7 +4,7 @@
     >
 
     <div 
-        class="w-96 px-8 py-6 rounded-lg border-2"
+        class="w-64 sm:w-96 px-8 py-6 rounded-lg border-2"
         :class="players[activePlayer].lost 
             ? 'border-red-600 dark:border-red-600' 
             : (players[activePlayer].delayed ? 'border-amber-400 dark:border-amber-500' : 'border-orange-400 dark:border-orange-500')"
@@ -49,7 +49,7 @@
     <x-button.orange 
         x-show="true" 
         @click="nextPlayer()"
-        class="flex justify-center items-center gap-2 w-96 mb-4 py-10 text-2xl md:text-4xl"
+        class="flex justify-center items-center gap-2 w-64 sm:w-96 mb-4 py-10 text-2xl md:text-4xl"
         >
         {{ __('Next Player') }}        
         <x-fas-angle-right class="block md:inline-block mt-px h-10 w-10" />
@@ -104,10 +104,9 @@
                             class="inline-block text-2xl lg:text-3xl xl:text-4xl font-bold"
                             ></p>
                         <p 
-                            x-show="clockType == 'clock'"
+                            x-show="clockType == 'clock' && player.milliseconds < 20000"
                             x-text="(Math.floor((player.milliseconds) % 1000) / 10).toString().padStart(2, '0')"
                             class="inline-block text-lg lg:text-xl xl:text-2xl font-bold"
-                            :class="player.milliseconds < 20000 ? '' : 'invisible'"
                             ></p>
                     </div>
                 </button>

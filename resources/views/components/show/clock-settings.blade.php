@@ -23,11 +23,11 @@
             'minimumSeconds' => 0,
         ],
     ] as $clock)
-        <div class="w-96 mt-4">
+        <div class="w-64 sm:w-96 mt-4">
             <p class="text-xl md:text-2xl">
                 {{ __($clock['title']) }}
             </p>
-            <p class="w-96 mb-4 mt-2 text-justify">
+            <p class="w-64 sm:w-96 mb-4 mt-2 text-justify">
                 {{ __($clock['description']) }}
             </p>
             <x-show.section class="mt-4">
@@ -103,14 +103,14 @@
     <x-show.section class="mt-6">
         <x-button.orange 
             @click="changeShow('clock-or-timer')"
-            class="flex justify-center items-center gap-2 w-48 text-xl md:text-2xl"
+            class="flex justify-center items-center gap-2 w-32 sm:w-48 text-xl md:text-2xl"
             >
             <x-fas-angle-left class="inline-block mt-px h-6 w-6" />
             {{ __('Back') }}
         </x-button.orange>
         <x-button.orange 
             @click="newGame()"
-            class="flex justify-center items-center gap-2 w-48 text-xl md:text-2xl"
+            class="flex justify-center items-center gap-2 w-32 sm:w-48 text-xl md:text-2xl"
             >
             {{ __('Start') }}
             <x-fas-hourglass-start class="inline-block mt-px h-6 w-6" />

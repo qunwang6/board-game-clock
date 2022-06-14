@@ -1,5 +1,5 @@
 <div
-    class="flex justify-between items-center px-8 py-4 border-b
+    class="flex justify-between items-center px-4 md:px-8 py-4 border-b
         border-gray-700
         dark:border-gray-300"                
     >
@@ -40,7 +40,8 @@
 
     <h1 class="flex justify-center items-center gap-2 font-semibold text-xl md:text-2xl
         ">
-        {{ __('Board Game Clock') }}
+        <span class="hidden md:inline-block">{{ __('Board Game Clock') }}</span>
+        <span class="inline-block md:hidden">{{ __('BGC') }}</span>
         <a 
             href="https://github.com/michaeljmeadows/board-game-clock"
             class="transition ease-in-out duration-200
