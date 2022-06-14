@@ -6,7 +6,7 @@
 
     <div class="flex justify-center items-center gap-4">
         <x-button
-            @click="initialise()"
+            @click="reset()"
             class="
                 hover:text-gray-600 active:text-gray-800
                 dark:hover:text-gray-200 dark:active:text-gray-400"

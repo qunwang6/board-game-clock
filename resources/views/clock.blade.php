@@ -100,9 +100,7 @@
         },
 
         initialise() {
-            clearInterval(this.interval);
-            clearTimeout(this.timeout);
-            this.isGameInProgress = false;
+            this.reset();
             this.players = [];
             for (let i = 0; i < {{ $initialNumberOfPlayers }}; i++) {
                 this.addPlayer();
@@ -113,8 +111,13 @@
             this.clockSettings.delaySeconds = {{ $delaySeconds }};
             this.timerSettings.visible = false;
             this.changeShow('number-of-players');
+        },
 
-            //this.newGame();
+        reset() {
+            clearInterval(this.interval);
+            clearTimeout(this.timeout);
+            this.isGameInProgress = false;
+            this.changeShow('number-of-players');
         },
 
         newGame() {
