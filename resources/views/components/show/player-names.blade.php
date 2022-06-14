@@ -22,6 +22,7 @@
             <x-input
                 type="text"
                 x-model="player.name" 
+                maxlength="32"
                 class="grow"
                 />
             <x-button.red 

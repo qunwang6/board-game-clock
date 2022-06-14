@@ -14,6 +14,11 @@
         timerSettings: {
             visible: false,
         },
+        activePlayer: 0,
+        interval: null,
+        timeout: null,
+        isGameInProgress: false,
+        isFirstTurn: true,
 
         changeShow(newShow) {
             this.show = ''; 
@@ -23,10 +28,16 @@
         addPlayer() {
             if (this.players.length < {{ $maximumPlayers }}) {
                 this.players.push({ 
-                    name: 'Player ' + (this.players.length + 1)
+                    name: 'Player ' + (this.players.length + 1),
+                    milliseconds: 0,
+                    millisecondsUsed: 0,
+                    lost: false,
+                    delayed: false,
+                    turns: 0,
                 });
             }
         },
+
         removePlayer(index) {
             if (this.players.length > {{ $minimumPlayers }}) {
                 if (index == undefined) {
@@ -46,6 +57,7 @@
                     return 1;
             }
         },
+
         changeSectionTime(section, seconds) {
             switch (section) { 
                 case 'initial':
@@ -76,31 +88,115 @@
                     break;
             }
         },
+
         addClockTime(section, unit) {
             let seconds = this.getUnitSeconds(unit);            
             this.changeSectionTime(section, seconds);
         },
+
         removeClockTime(section, unit) {
             let seconds = this.getUnitSeconds(unit);
             this.changeSectionTime(section, -seconds);
         },
 
         initialise() {
+            clearInterval(this.interval);
+            clearTimeout(this.timeout);
+            this.isGameInProgress = false;
             this.players = [];
             for (let i = 0; i < {{ $initialNumberOfPlayers }}; i++) {
                 this.addPlayer();
             }
-            this.changeShow('number-of-players');
-            //this.changeShow('clock-settings');
             this.clockType = 'clock';
-            this.clockSettings.initialSeconds = 600;
-            this.clockSettings.incrementSeconds = 5;
-            this.clockSettings.delaySeconds = 0;
+            this.clockSettings.initialSeconds = {{ $initialSeconds }};
+            this.clockSettings.incrementSeconds = {{ $incrementSeconds }};
+            this.clockSettings.delaySeconds = {{ $delaySeconds }};
             this.timerSettings.visible = false;
+            this.changeShow('number-of-players');
+
+            //this.newGame();
         },
 
         newGame() {
-            alert('new game');
+            clearInterval(this.interval);
+            clearTimeout(this.timeout);
+            for (let i = 0; i < this.players.length; i++) {
+                this.players[i].milliseconds = this.clockSettings.initialSeconds * 1000;
+                this.players[i].millisecondsUsed = 0;
+                this.players[i].lost = false;
+                this.players[i].turns = 0;
+            }
+            this.changeShow('game');
+            this.isGameInProgress = true;
+            this.isFirstTurn = true;
+            setTimeout(() => this.activatePlayer(0), 300);
+        },
+
+        activatePlayer(index) {
+            clearInterval(this.interval);
+            clearTimeout(this.timeout);
+            if (!this.isFirstTurn && !this.players[this.activePlayer].lost) {
+                this.players[this.activePlayer].milliseconds += (this.clockSettings.incrementSeconds * 1000);
+            }
+            this.isFirstTurn = false;
+            this.activePlayer = index;
+            this.players[this.activePlayer].turns++;
+            this.players[this.activePlayer].delayed = true;
+            this.timeout = setTimeout(() => {
+                this.players[this.activePlayer].delayed = false;
+                let ms = 10;
+                this.interval = setInterval(() => {
+                    if (!this.players[this.activePlayer].lost) {
+                        if (this.clockType == 'clock') {
+                            this.players[this.activePlayer].milliseconds -= ms;
+                            if (this.players[this.activePlayer].milliseconds <= 0) {
+                                this.players[this.activePlayer].milliseconds = 0;
+                                this.playerLost(this.activePlayer);
+                            }
+                        }
+                        this.players[this.activePlayer].millisecondsUsed += ms;
+                    }
+                    return 0;
+                }, ms);
+            }, this.clockSettings.delaySeconds * 1000);
+        },
+
+        nextPlayer() {
+            let index = this.activePlayer;
+            do {
+                index++;
+                if (index >= this.players.length) {
+                    index = 0;
+                }
+            } while (this.players[index].lost);
+            this.activatePlayer(index);
+        },
+
+        playerLost(index) {
+            this.players[index].lost = true;
+            let stillPlaying = 0;
+            for (let i = 0; i < this.players.length; i++) {
+                if (!this.players[i].lost) {
+                    stillPlaying++;
+                }
+            }
+            if (stillPlaying < 2) {
+                this.endGame();
+            }
+        },
+
+        endGame() {
+            clearInterval(this.interval);
+            clearTimeout(this.timeout);
+            this.isGameInProgress = false;
+            this.changeShow('final-statistics');
+        },
+
+        convertMilliseconds(ms) {
+            let hours = Math.floor((ms / 1000) / (60 * 60));
+            let minutes = (Math.floor(((ms / 1000) % (60 * 60)) / 60)).toString().padStart(2, '0');
+            let seconds = (Math.floor((ms / 1000) % 60)).toString().padStart(2, '0')
+            return hours + ':' + minutes + ':' + seconds;
         },
     }"
     x-init="initialise()"
@@ -154,6 +250,8 @@
         <x-show.clock-or-timer />
         <x-show.clock-settings />
         <x-show.timer-settings />
+
+        <x-show.game />
 
     </body>
 

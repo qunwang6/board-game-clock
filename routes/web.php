@@ -18,5 +18,8 @@ Route::get('/', function () {
         'initialNumberOfPlayers' => 2,
         'minimumPlayers' => 1,
         'maximumPlayers' => 16,
+        'initialSeconds' => 20,
+        'incrementSeconds' => 5,
+        'delaySeconds' => 0,
     ]);
 });

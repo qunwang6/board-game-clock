@@ -25,6 +25,17 @@
                 class="inline-block h-6 w-6"
                 />
         </x-button>
+        <x-button
+            x-show="isGameInProgress"
+            @click="endGame()"
+            class="
+                hover:text-gray-600 active:text-gray-800
+                dark:hover:text-gray-200 dark:active:text-gray-400"
+            >
+            <x-fas-flag-checkered
+                class="inline-block h-6 w-6"
+                />
+        </x-button>
     </div>
 
     <h1 class="flex justify-center items-center gap-2 font-semibold text-xl md:text-2xl
