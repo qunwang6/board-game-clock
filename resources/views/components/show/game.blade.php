@@ -4,7 +4,7 @@
     >
 
     <div 
-        class="w-64 sm:w-96 px-8 py-6 rounded-lg border-2"
+        class="w-11/12 sm:w-96 px-8 py-6 rounded-lg border-2"
         :class="players[activePlayer].lost 
             ? 'border-red-600 dark:border-red-600' 
             : (players[activePlayer].delayed ? 'border-amber-400 dark:border-amber-500' : 'border-orange-400 dark:border-orange-500')"
@@ -31,17 +31,16 @@
         </h1>
         <div
             x-show="clockType != 'timer' || timerSettings.visible" 
-            class="block w-full mt-4 text-center"
+            class="block sm:w-96 smmt-4 mx-auto"
             >
             <p 
                 x-text="convertMilliseconds(clockType == 'clock' ? players[activePlayer].milliseconds : players[activePlayer].millisecondsUsed)"
                 class="inline-block text-4xl lg:text-5xl font-bold"
                 ></p>
             <p 
-                x-show="clockType == 'clock'"
+                x-show="clockType == 'clock' && players[activePlayer].milliseconds < 20000"
                 x-text="(Math.floor((players[activePlayer].milliseconds) % 1000) / 10).toString().padStart(2, '0')"
                 class="inline-block text-lg lg:text-xl xl:text-2xl font-bold"
-                :class="players[activePlayer].milliseconds < 20000 ? '' : 'invisible'"
                 ></p>
         </div>
     </div>
@@ -49,7 +48,7 @@
     <x-button.orange 
         x-show="true" 
         @click="nextPlayer()"
-        class="flex justify-center items-center gap-2 w-64 sm:w-96 mb-4 py-10 text-2xl md:text-4xl"
+        class="flex justify-center items-center gap-2 w-11/12 sm:w-96 mb-4 px-8 py-10 text-2xl md:text-4xl"
         >
         {{ __('Next Player') }}        
         <x-fas-angle-right class="block md:inline-block mt-px h-10 w-10" />

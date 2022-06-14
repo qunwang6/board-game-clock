@@ -1,0 +1,1 @@
+<p {{ $attributes->merge(['class' => 'flex items-center h-10 px-2 py-1 text-xl md:text-3xl rounded-lg text-gray-700 bg-gray-100 border-gray-500 dark:text-gray-300 dark:bg-gray-500 dark:border-gray-500']) }} ></p>

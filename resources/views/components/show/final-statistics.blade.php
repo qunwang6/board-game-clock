@@ -9,25 +9,27 @@
 
     <table class="block sm:table my-4 sm:my-8 mx-4 text-xl md:text-2xl">
         <thead class="block sm:table-header-group">
-            <th
-                class="hidden sm:table-cell px-2 md:px-6 text-left"
-                >{{ __('Player') }}</th>
-            <th
-                x-show="clockType == 'clock'"
-                class="inline-block sm:table-cell px-2 md:px-6"
-                >{{ __('Clock') }}</th>
-            <th
-                x-show="clockType == 'timer'"
-                class="inline-block sm:table-cell px-2 md:px-6"
-                >{{ __('Used') }}</th>
-            <th
-                class="inline-block sm:table-cell px-2 md:px-6"
-                >{{ __('Turns') }}</th>
-            <th
-                class="inline-block sm:table-cell px-2 md:px-6"
-                >{{ __('Average turn') }}</th>
+            <tr class="block sm:table-row">
+                <th
+                    class="hidden sm:table-cell px-2 md:px-6 text-left"
+                    >{{ __('Player') }}</th>
+                <th
+                    x-show="clockType == 'clock'"
+                    class="inline-block sm:table-cell px-2 md:px-6"
+                    >{{ __('Clock') }}</th>
+                <th
+                    x-show="clockType == 'timer'"
+                    class="inline-block sm:table-cell px-2 md:px-6"
+                    >{{ __('Used') }}</th>
+                <th
+                    class="inline-block sm:table-cell px-2 md:px-6"
+                    >{{ __('Turns') }}</th>
+                <th
+                    class="inline-block sm:table-cell px-2 md:px-6"
+                    >{{ __('Average turn') }}</th>
+            </tr>
         </thead>
-        <tbody class="block sm:table-body-group">
+        <tbody class="block sm:table-row-group">
             <template x-for="(player, index) in [...players].sort((a, b) => (a.millisecondsUsed / (a.turns ? a.turns : 1)) - (b.millisecondsUsed / (b.turns ? b.turns : 1)))">
                 <tr 
                     class="block sm:table-row"

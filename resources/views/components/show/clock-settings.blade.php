@@ -31,18 +31,16 @@
                 {{ __($clock['description']) }}
             </p>
             <x-show.section class="mt-4">
-                <div class="w-20 text-center">
+                <div class="w-16 text-center">
                     <x-button.orange 
                         @click="addClockTime('{{ $clock['section'] }}', 'hour')"
                         class="block mx-auto"
                         >
                         <x-fas-plus class="inline-block h-6 w-6" />
                     </x-button.orange>
-                    <x-input 
-                        x-model="Math.floor(clockSettings.{{ $clock['section'] }}Seconds / (60 * 60))" 
-                        type="number" 
-                        class="block w-20 mx-auto my-1 text-right"
-                        disabled
+                    <x-fake-input 
+                        x-text="Math.floor(clockSettings.{{ $clock['section'] }}Seconds / (60 * 60))" 
+                        class="justify-center w-16 mx-auto my-1 text-center"
                         />
                     <x-button.orange 
                         @click="removeClockTime('{{ $clock['section'] }}', 'hour')"
@@ -53,18 +51,16 @@
                     </x-button.orange>
                 </div>
                 :
-                <div class="w-20 text-center">
+                <div class="w-16 text-center">
                     <x-button.orange 
                         @click="addClockTime('{{ $clock['section'] }}', 'minute')"
                         class="block mx-auto"
                         >
                         <x-fas-plus class="inline-block h-6 w-6" />
                     </x-button.orange>
-                    <x-input 
-                        x-model="(Math.floor((clockSettings.{{ $clock['section'] }}Seconds % (60 * 60)) / 60)).toString().padStart(2, '0')" 
-                        type="number" 
-                        class="block w-20 mx-auto my-1 text-right"
-                        disabled
+                    <x-fake-input 
+                        x-text="(Math.floor((clockSettings.{{ $clock['section'] }}Seconds % (60 * 60)) / 60)).toString().padStart(2, '0')" 
+                        class="justify-center w-16 mx-auto my-1 text-center"
                         />
                     <x-button.orange 
                         @click="removeClockTime('{{ $clock['section'] }}', 'minute')"
@@ -75,18 +71,16 @@
                     </x-button.orange>
                 </div>
                 :
-                <div class="w-20 text-center">
+                <div class="w-16 text-center">
                     <x-button.orange 
                         @click="addClockTime('{{ $clock['section'] }}', 'second')"    
                         class="block mx-auto"
                         >
                         <x-fas-plus class="inline-block h-6 w-6" />
                     </x-button.orange>
-                    <x-input 
-                        x-model="(clockSettings.{{ $clock['section'] }}Seconds % 60).toString().padStart(2, '0')" 
-                        type="number" 
-                        class="block w-20 mx-auto my-1 text-right"
-                        disabled
+                    <x-fake-input 
+                        x-text="(clockSettings.{{ $clock['section'] }}Seconds % 60).toString().padStart(2, '0')" 
+                        class="justify-center w-16 mx-auto my-1 text-center"
                         />
                     <x-button.orange 
                         @click="removeClockTime('{{ $clock['section'] }}', 'second')"

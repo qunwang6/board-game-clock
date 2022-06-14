@@ -21,12 +21,9 @@
                 >
                 <x-fas-minus class="inline-block h-6 w-6" />
             </x-button.orange>
-            <x-input 
-                x-model="players.length" 
-                id="number_of_players" 
-                type="number" 
-                class="w-24 text-right"
-                disabled
+            <x-fake-input 
+                x-text="players.length"
+                class="justify-end w-20 pr-4 text-right"
                 />
             <x-button.orange 
                 @click="addPlayer()"
