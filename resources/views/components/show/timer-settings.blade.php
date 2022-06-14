@@ -15,7 +15,7 @@
                     hover:text-gray-600 active:text-gray-800
                     dark:hover:text-gray-200 dark:active:text-gray-400"
                 >
-                <x-fas-eye class="hidden md:inline-block h-6 w-6" />
+                <x-fas-eye class="inline-block h-6 w-6" />
             </x-button>
             <x-button 
                 type="button"
@@ -34,7 +34,7 @@
                     hover:text-gray-600 active:text-gray-800
                     dark:hover:text-gray-200 dark:active:text-gray-400"
                 >
-                <x-fas-eye-slash class="hidden md:inline-block h-6 w-6"/>
+                <x-fas-eye-slash class="inline-block h-6 w-6"/>
             </x-button>
         </div>
     </div>   
