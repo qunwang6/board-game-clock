@@ -15,10 +15,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('clock', [
-        'initialNumberOfPlayers' => 2,
+        'initialNumberOfPlayers' => 4,
         'minimumPlayers' => 1,
         'maximumPlayers' => 16,
-        'initialSeconds' => 20,
+        'initialSeconds' => 600,
         'incrementSeconds' => 5,
         'delaySeconds' => 0,
     ]);
