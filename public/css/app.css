@@ -1282,6 +1282,11 @@ select {
   color: rgb(229 231 235 / var(--tw-text-opacity));
 }
 
+.dark .dark\:active\:text-sky-400:active {
+  --tw-text-opacity: 1;
+  color: rgb(56 189 248 / var(--tw-text-opacity));
+}
+
 @media (min-width: 768px) {
 
   .md\:top-0 {

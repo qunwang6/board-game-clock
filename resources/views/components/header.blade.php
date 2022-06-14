@@ -76,7 +76,7 @@
             @click="dark = true"
             class="
                 text-sky-700 hover:text-sky-600 active:text-sky-800
-                dark:text-sky-300 dark:hover:text-sky-200 active:text-sky-400"
+                dark:text-sky-300 dark:hover:text-sky-200 dark:active:text-sky-400"
             >
             <x-fas-moon class="hidden md:inline-block h-6 w-6"/>
         </x-button>
