@@ -253,6 +253,8 @@
 
         <x-show.game />
 
+        <x-show.final-statistics />
+
     </body>
 
 </html>
