@@ -35,6 +35,7 @@
                     <x-button.orange 
                         @click="addClockTime('{{ $clock['section'] }}', 'hour')"
                         class="block mx-auto"
+                        aria-label="Increase hours"
                         >
                         <x-fas-plus class="inline-block h-6 w-6" />
                     </x-button.orange>
@@ -46,6 +47,7 @@
                         @click="removeClockTime('{{ $clock['section'] }}', 'hour')"
                         enable="clockSettings.{{ $clock['section'] }}Seconds >= (60 * 60)"
                         class="block mx-auto"
+                        aria-label="Decrease hours"
                         >
                         <x-fas-minus class="inline-block h-6 w-6" />
                     </x-button.orange>
@@ -55,6 +57,7 @@
                     <x-button.orange 
                         @click="addClockTime('{{ $clock['section'] }}', 'minute')"
                         class="block mx-auto"
+                        aria-label="Increase minutes"
                         >
                         <x-fas-plus class="inline-block h-6 w-6" />
                     </x-button.orange>
@@ -66,6 +69,7 @@
                         @click="removeClockTime('{{ $clock['section'] }}', 'minute')"
                         enable="clockSettings.{{ $clock['section'] }}Seconds >= 60"
                         class="block mx-auto"
+                        aria-label="Decrease minutes"
                         >
                         <x-fas-minus class="inline-block h-6 w-6" />
                     </x-button.orange>
@@ -75,6 +79,7 @@
                     <x-button.orange 
                         @click="addClockTime('{{ $clock['section'] }}', 'second')"    
                         class="block mx-auto"
+                        aria-label="Increase seconds"
                         >
                         <x-fas-plus class="inline-block h-6 w-6" />
                     </x-button.orange>
@@ -86,6 +91,7 @@
                         @click="removeClockTime('{{ $clock['section'] }}', 'second')"
                         enable="clockSettings.{{ $clock['section'] }}Seconds > {{ $clock['minimumSeconds'] }}"
                         class="block mx-auto"
+                        aria-label="Dncrease seconds"
                         >
                         <x-fas-minus class="inline-block h-6 w-6" />
                     </x-button.orange>

@@ -14,6 +14,7 @@
                 class="
                     hover:text-gray-600 active:text-gray-800
                     dark:hover:text-gray-200 dark:active:text-gray-400"
+                aria-label="Show timers"            
                 >
                 <x-fas-eye class="inline-block h-6 w-6" />
             </x-button>
@@ -23,6 +24,7 @@
                 class="px-2 
                     hover:text-gray-600 active:text-gray-800
                     dark:hover:text-gray-200 dark:active:text-gray-400"
+                aria-label="Toggle timers"            
                 >
                 <x-fas-toggle-off x-show="timerSettings.visible" class="inline-block h-6 w-6" />
                 <x-fas-toggle-on x-cloak x-show="!timerSettings.visible" class="inline-block h-6 w-6"/>
@@ -33,6 +35,7 @@
                 class="
                     hover:text-gray-600 active:text-gray-800
                     dark:hover:text-gray-200 dark:active:text-gray-400"
+                aria-label="Hide timers"            
                 >
                 <x-fas-eye-slash class="inline-block h-6 w-6"/>
             </x-button>

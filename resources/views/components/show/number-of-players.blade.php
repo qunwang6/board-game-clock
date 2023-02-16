@@ -18,6 +18,7 @@
             <x-button.orange 
                 @click="removePlayer()"
                 enable="players.length > {{ $minimumPlayers }}"
+                aria-label="Increase number of players"            
                 >
                 <x-fas-minus class="inline-block h-6 w-6" />
             </x-button.orange>
@@ -28,6 +29,7 @@
             <x-button.orange 
                 @click="addPlayer()"
                 enable="players.length < {{ $maximumPlayers }}"
+                aria-label="Decrease number of players"            
                 >
                 <x-fas-plus class="inline-block h-6 w-6" />
             </x-button.orange>

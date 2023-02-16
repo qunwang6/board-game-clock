@@ -15,8 +15,9 @@
                 text-red-500 hover:text-red-400 active:text-red-600 dark:text-red-600 dark:hover:text-red-500 dark:active:text-red-700"
             x-bind:class="players[activePlayer].lost 
                 ? 'hidden'
-                : ''"                
-                >
+                : ''"    
+            aria-label="Player lost"            
+            >
             <x-fas-times-circle 
                 class="inline-block mt-px h-10 w-10"
                 />
@@ -70,7 +71,8 @@
                     x-bind:class="player.lost 
                         ? 'hidden'
                         : (activePlayer == index ? 'hover:text-gray-600 active:text-gray-800 dark:hover:text-gray-200 dark:active:text-gray-400' : 'text-red-500 hover:text-red-400 active:text-red-600 dark:text-red-600 dark:hover:text-red-500 dark:active:text-red-700')"
-                        >
+                    aria-label="Player lost"            
+                    >
                     <x-fas-times-circle 
                         class="inline-block mt-px h-6 w-6 lg:h-10 lg:w-10"
                         />
@@ -81,6 +83,7 @@
                     class="text-left"
                     :class="activePlayer == index ? '' : 'cursor-pointer hover:text-gray-600 active:text-gray-800 dark:hover:text-gray-200 dark:active:text-gray-400'"
                     :disabled="activePlayer == index || player.lost"
+                    aria-label="Activate player"            
                     >
                     <h1 
                         class="inline-block md:block md:text-2xl"

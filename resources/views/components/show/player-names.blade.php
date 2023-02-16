@@ -28,6 +28,7 @@
             <x-button.red 
                 x-show="players.length > {{ $minimumPlayers }}" 
                 @click="removePlayer(index)"
+                aria-label="Remove player"            
                 >
                 <x-fas-times class="inline-block h-6 w-6" />
             </x-button.red>
